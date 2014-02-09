@@ -1,7 +1,8 @@
-package com.negod.genericstest;
+package com.negod.genericlibrary;
 
-import com.negod.genericstest.constants.Constants;
+import com.negod.genericlibrary.constants.Constants;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import org.jdom.Attribute;
 import org.jdom.Document;
@@ -38,7 +39,7 @@ public class XmlReader {
                 case STRING:
                     rootDto.set(getEnumProperty(rootDto, data.getKey().toString()), classDefiner.getStringValue(childNode.getValue()));
                 case ARRAY_LIST:
-                    handleCollections();
+                    handleCollections(childNode, data.getKey().toString().toLowerCase());
                 case NO_VALUE:
                     rootDto.set(getEnumProperty(rootDto, data.getKey().toString()), childNode.getValue());
             }
@@ -46,7 +47,10 @@ public class XmlReader {
         return rootDto;
     }
 
-    private Collection handleCollections() {
+    private Collection handleCollections(Element childNode, String childNodes) {
+        List children = childNode.getChildren(childNodes);
+
+
         return null;
     }
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<setting rootClass="com.negod.genericstest.Setting">
+<setting rootClass="com.negod.genericlibrary.Setting">
   <deploy_path />
   <compile_path />
   <users collection="java.util.ArrayList">
-    <user rootClass="com.negod.genericstest.User">
-      <phone rootClass="com.negod.genericstest.Phone">
+    <user rootClass="com.negod.genericlibrary.User">
+      <phone rootClass="com.negod.genericlibrary.Phone">
         <home class="java.lang.Long">123456</home>
         <mobile />
       </phone>
@@ -12,7 +12,7 @@
       <prename />
       <lastname class="java.lang.String">Johansson</lastname>
     </user>
-    <user rootClass="com.negod.genericstest.User">
+    <user rootClass="com.negod.genericlibrary.User">
       <phone />
       <prename />
       <lastname class="java.lang.String">Karlsson</lastname>

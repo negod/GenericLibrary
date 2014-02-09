@@ -1,9 +1,9 @@
 /*
  *
  */
-package com.negod.genericstest;
+package com.negod.genericlibrary;
 
-import com.negod.genericstest.constants.Constants;
+import com.negod.genericlibrary.constants.Constants;
 import java.util.Collection;
 import java.util.Map;
 import org.jdom.Document;

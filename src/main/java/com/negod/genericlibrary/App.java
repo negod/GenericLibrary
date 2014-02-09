@@ -1,4 +1,4 @@
-package com.negod.genericstest;
+package com.negod.genericlibrary;
 
 import java.io.StringReader;
 import java.io.StringWriter;

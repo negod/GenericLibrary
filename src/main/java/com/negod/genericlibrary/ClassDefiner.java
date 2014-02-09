@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.negod.genericstest;
+package com.negod.genericlibrary;
 
-import com.negod.genericstest.constants.Constants;
+import com.negod.genericlibrary.constants.Constants;
 import org.jdom.Attribute;
 import org.jdom.Element;
 

@@ -1,4 +1,4 @@
-package com.negod.genericstest;
+package com.negod.genericlibrary;
 
 import java.io.File;
 import java.io.FileWriter;
