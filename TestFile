@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setting rootClass="com.negod.genericstest.Setting">
+  <deploy_path />
+  <compile_path />
+  <users collection="java.util.ArrayList">
+    <user rootClass="com.negod.genericstest.User">
+      <phone rootClass="com.negod.genericstest.Phone">
+        <home class="java.lang.Long">123456</home>
+        <mobile />
+      </phone>
+      <phone />
+      <prename />
+      <lastname class="java.lang.String">Johansson</lastname>
+    </user>
+    <user rootClass="com.negod.genericstest.User">
+      <phone />
+      <prename />
+      <lastname class="java.lang.String">Karlsson</lastname>
+    </user>
+  </users>
+  <compile class="java.lang.Integer">123</compile>
+  <unzip />
+  <zip_path />
+</setting>
+
