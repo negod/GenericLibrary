@@ -15,7 +15,10 @@ import org.jdom.Element;
 public class ClassDefiner {
 
     public JavaClasses getClassType(Element element) throws Exception {
-        if (containsAttribute(element, Constants.classAttribute)) {
+
+        if (element == null) {
+            return JavaClasses.NO_VALUE;
+        } else if (containsAttribute(element, Constants.classAttribute)) {
             return JavaClasses.getConstant(element.getAttribute(Constants.classAttribute).getValue());
         } else if (containsAttribute(element, Constants.rootClassAttribute)) {
             return JavaClasses.getConstant(element.getAttribute(Constants.rootClassAttribute).getValue());
@@ -42,7 +45,7 @@ public class ClassDefiner {
         return data;
     }
 
-    private boolean containsAttribute(Element element, String inAttribute) {
+    public boolean containsAttribute(Element element, String inAttribute) {
         Attribute attribute = element.getAttribute(inAttribute);
         return attribute == null ? false : true;
     }

@@ -21,57 +21,47 @@ public class App {
     public static void main(String[] args) {
 
         List<Dto> userList = new ArrayList<Dto>();
+        userList.add(getUser());
+        userList.add(getUser());
+
         Dto setting = new Dto(Setting.class);
         setting.set(Setting.COMPILE, 123);
-
-        Dto user1 = new Dto(User.class);
-        user1.set(User.LASTNAME, "Johansson");
-        Dto user2 = new Dto(User.class);
-        user2.set(User.LASTNAME, "Karlsson");
-
-        userList.add(user1);
-        userList.add(user2);
-
-        Dto phone = new Dto(Phone.class);
-        phone.set(Phone.HOME, 123456L);
-        user1.set(User.PHONE, phone);
-
+        setting.set(Setting.COMPILE_PATH, "CompilePath");
+        setting.set(Setting.DEPLOY_PATH, "DeployPath");
+        setting.set(Setting.UNZIP, "UnZipPath");
         setting.set(Setting.USERS, userList);
+        setting.set(Setting.ZIP_PATH, "ZipPath");
 
-        Integer data = setting.get(Setting.COMPILE);
-        
         try {
             XmlFileHandler handler = new XmlFileHandler();
             handler.createXml(setting, "TestFile");
             Dto dtoData = handler.parseXmlToDto("TestFile");
+            handler.createXml(dtoData, "TestFile2");
             System.out.print("Hello");
         } catch (Exception ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-
     }
 
-    public <T> String marshal(T object) {
-        try {
-            StringWriter stringWriter = new StringWriter();
-            JAXBContext jc = JAXBContext.newInstance(object.getClass());
-            Marshaller m = jc.createMarshaller();
-            m.marshal(object, stringWriter);
-            return stringWriter.toString();
-        } catch (JAXBException e) {
-        }
-        return null;
+    public static Dto getUser() {
+        Dto dto = new Dto(User.class);
+        dto.set(User.LASTNAME, "Johansson");
+        dto.set(User.PRENAME, "Joakim");
+        dto.set(User.PHONE, getPhone());
+        return dto;
     }
 
-    public <T> T unMarshal(String content, Class<T> clasz) {
-        try {
-            JAXBContext jc = JAXBContext.newInstance(clasz);
-            Unmarshaller u = jc.createUnmarshaller();
-            return u.unmarshal(new StreamSource(new StringReader(content)), clasz).getValue();
-        } catch (JAXBException e) {
-        }
-        return null;
+    public static Dto getPhone() {
+        Dto dto = new Dto(Phone.class);
+        dto.set(Phone.HOME, "0522 - 18087");
+        dto.set(Phone.MOBILE, "0704 - 101192");
+        dto.set(Phone.PHONEPHONE, getPhonePhone());
+        return dto;
+    }
+
+    public static Dto getPhonePhone() {
+        Dto dto = new Dto(PhonePhone.class);
+        dto.set(PhonePhone.SUPANUMBER, 1234);
+        return dto;
     }
 }

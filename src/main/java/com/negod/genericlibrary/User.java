@@ -13,5 +13,4 @@ public enum User {
     PRENAME,
     LASTNAME,
     PHONE;
-  
 }

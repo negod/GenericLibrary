@@ -1,5 +1,7 @@
 package com.negod.genericlibrary;
 
+import com.negod.genericlibrary.constants.Constants;
+
 /**
  *
  * @author Joakim
@@ -11,6 +13,7 @@ public enum JavaClasses {
     DOUBLE("java.lang.Double"),
     LONG("java.lang.Long"),
     ARRAY_LIST("java.util.ArrayList"),
+    ROOT_CLASS(Constants.rootClassAttribute),
     NO_VALUE("");
     private String className;
 

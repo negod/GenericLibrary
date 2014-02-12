@@ -14,7 +14,5 @@ public class Constants {
     public static final String classAttribute = "class";
     public static final String rootClassAttribute = "rootClass";
     public static final String collectionAttribute = "collection";
-    
-    //java classes
-    public static final String Integer = "java.lang.Integer";
+    public static final String child = "child";
 }

@@ -15,6 +15,8 @@ import org.jdom.Element;
  */
 class XmlCreator {
 
+    ClassDefiner definer = new ClassDefiner();
+
     public Document createXmlDocument(Dto dto) {
         return new Document(addChildnodes(dto));
     }
@@ -31,10 +33,16 @@ class XmlCreator {
         currentRootNode.setAttribute(Constants.rootClassAttribute, dto.getEnumType().getName());
         for (Map.Entry data : dto.getFields().entrySet()) {
             Element childToCurrentRootNode = new Element(data.getKey().toString().toLowerCase());
+            ElementContentType content = ElementContentType.OTHER;
+
             if (data.getValue() != null) {
-                addContentToChildNode(data, currentRootNode, childToCurrentRootNode);
+                content = addContentToChildNode(data, currentRootNode, childToCurrentRootNode);
             }
-            currentRootNode.addContent(childToCurrentRootNode);
+
+            if (!content.equals(ElementContentType.DTO)) {
+                currentRootNode.addContent(childToCurrentRootNode);
+            }
+
         }
         return currentRootNode;
     }
@@ -51,14 +59,17 @@ class XmlCreator {
      * @param childToCurrentRootNode The childnode that will be populated with
      * data and added to the current rootNode v
      */
-    void addContentToChildNode(Map.Entry data, Element currentRootNode, Element childToCurrentRootNode) {
+    ElementContentType addContentToChildNode(Map.Entry data, Element currentRootNode, Element childToCurrentRootNode) {
         if (data.getValue() instanceof Dto) {
             currentRootNode.addContent(addChildnodes((Dto) data.getValue()));
+            return ElementContentType.DTO;
         } else if (data.getValue() instanceof Collection) {
             HandleCollections(data, childToCurrentRootNode);
+            return ElementContentType.COLLECTION;
         } else {
             childToCurrentRootNode.addContent(data.getValue().toString());
             childToCurrentRootNode.setAttribute(Constants.classAttribute, data.getValue().getClass().getName());
+            return ElementContentType.OTHER;
         }
     }
 

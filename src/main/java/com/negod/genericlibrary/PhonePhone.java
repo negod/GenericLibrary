@@ -8,8 +8,6 @@ package com.negod.genericlibrary;
  *
  * @author Joakim
  */
-public enum Phone {
-
-    HOME, MOBILE, PHONEPHONE;
-
+public enum PhonePhone {
+    SUPANUMBER;
 }
