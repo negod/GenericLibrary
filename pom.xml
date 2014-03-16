@@ -74,6 +74,7 @@
         <connection>scm:git:git@github.com:negod/GenericLibrary.git</connection>
         <url>https://github.com/negod/GenericLibrary.git</url>
         <developerConnection>scm:git:git@github.com:negod/GenericLibrary.git</developerConnection>
+        <tag>HEAD</tag>
     </scm>
 
 </project>
