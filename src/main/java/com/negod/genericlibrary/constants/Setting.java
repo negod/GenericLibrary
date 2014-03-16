@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.negod.genericlibrary;
+package com.negod.genericlibrary.constants;
 
 /**
  *
@@ -16,6 +16,7 @@ public enum Setting {
     COMPILE_PATH,
     UNZIP,
     COMPILE,
-    USERS;
+    USERS,
+    USER;
 
 }

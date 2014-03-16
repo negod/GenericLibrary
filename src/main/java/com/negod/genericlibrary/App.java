@@ -1,16 +1,15 @@
 package com.negod.genericlibrary;
 
-import java.io.StringReader;
-import java.io.StringWriter;
+import com.negod.genericlibrary.xml.XmlFileHandler;
+import com.negod.genericlibrary.constants.User;
+import com.negod.genericlibrary.constants.Setting;
+import com.negod.genericlibrary.constants.Phone;
+import com.negod.genericlibrary.constants.PhonePhone;
+import com.negod.genericlibrary.dto.Dto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.transform.stream.StreamSource;
 
 /**
  * Hello world!
@@ -24,18 +23,19 @@ public class App {
         userList.add(getUser());
         userList.add(getUser());
 
-        Dto setting = new Dto(Setting.class);
+        Dto<Setting> setting = new Dto(Setting.class);
         setting.set(Setting.COMPILE, 123);
         setting.set(Setting.COMPILE_PATH, "CompilePath");
         setting.set(Setting.DEPLOY_PATH, "DeployPath");
         setting.set(Setting.UNZIP, "UnZipPath");
         setting.set(Setting.USERS, userList);
         setting.set(Setting.ZIP_PATH, "ZipPath");
+        setting.set(Setting.USER, getUser());
 
         try {
             XmlFileHandler handler = new XmlFileHandler();
             handler.createXml(setting, "TestFile");
-            Dto dtoData = handler.parseXmlToDto("TestFile");
+            Dto dtoData = handler.getXmlFileAsDto("TestFile");
             handler.createXml(dtoData, "TestFile2");
             System.out.print("Hello");
         } catch (Exception ex) {
@@ -44,7 +44,7 @@ public class App {
     }
 
     public static Dto getUser() {
-        Dto dto = new Dto(User.class);
+        Dto<User> dto = new Dto(User.class);
         dto.set(User.LASTNAME, "Johansson");
         dto.set(User.PRENAME, "Joakim");
         dto.set(User.PHONE, getPhone());
@@ -52,7 +52,7 @@ public class App {
     }
 
     public static Dto getPhone() {
-        Dto dto = new Dto(Phone.class);
+        Dto<Phone> dto = new Dto(Phone.class);
         dto.set(Phone.HOME, "0522 - 18087");
         dto.set(Phone.MOBILE, "0704 - 101192");
         dto.set(Phone.PHONEPHONE, getPhonePhone());
@@ -60,7 +60,7 @@ public class App {
     }
 
     public static Dto getPhonePhone() {
-        Dto dto = new Dto(PhonePhone.class);
+        Dto<PhonePhone> dto = new Dto(PhonePhone.class);
         dto.set(PhonePhone.SUPANUMBER, 1234);
         return dto;
     }

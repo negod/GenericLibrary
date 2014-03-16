@@ -2,15 +2,15 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.negod.genericlibrary;
+package com.negod.genericlibrary.constants;
 
 /**
  *
  * @author Joakim
  */
-public interface GenericDto {
+public enum User {
 
-    String getFieldName();
-    
-    String getXmlRootNode();
+    PRENAME,
+    LASTNAME,
+    PHONE;
 }

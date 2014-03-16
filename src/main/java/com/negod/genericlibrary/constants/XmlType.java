@@ -2,12 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.negod.genericlibrary;
+package com.negod.genericlibrary.constants;
 
 /**
  *
  * @author Joakim
  */
-public enum ElementContentType {
-    DTO, COLLECTION, OTHER;
+public enum XmlType {
+    PRETTY_PRINT, CLASS_DEFINED;
 }
