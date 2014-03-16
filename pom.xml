@@ -11,6 +11,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <github.global.server>github</github.global.server>
     </properties>
 
     <dependencies>
@@ -53,10 +54,12 @@
     </build>
 
     <scm>
-        <connection>scm:git:git@github.com:negod/GenericLibrary.git</connection>
-        <url>scm:git:git@github.com:tnegod/GenericLibrary.git</url>
-        <developerConnection>scm:git:git@github.com:negod/GenericLibrary.git</developerConnection>
+        <connection>scm:git:https://github.com/negod/GenericLibrary.git</connection>
+        <url>scm:git:https://github.com/negod/GenericLibrary.git</url>
+        <developerConnection>scm:git:https://github.com/negod/GenericLibrary.git</developerConnection>
     </scm>
+    
+    
 
 
 </project>
