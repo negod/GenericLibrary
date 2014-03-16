@@ -3,7 +3,7 @@
 
     <groupId>com.negod</groupId>
     <artifactId>GenericLibrary</artifactId>
-    <version>1.0-snapshot</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>GenericLibrary</name>
