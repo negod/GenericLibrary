@@ -50,13 +50,20 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <artifactId>maven-scm-plugin</artifactId>
+                <version>1.8.1</version>
+                <configuration>
+                    <tag>${project.artifactId}-${project.version}</tag>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
     <scm>
-        <connection>scm:git:git@github.com:negod/GenericLibrary.git</connection>
-        <url>scm:git:git@github.com:tnegod/GenericLibrary.git</url>
-        <developerConnection>scm:git:git@github.com:negod/GenericLibrary.git</developerConnection>
+        <connection>scm:git:https://github.com/negod/GenericLibrary.git</connection>
+        <url>scm:git:https://github.com/negod/GenericLibrary.git</url>
+        <developerConnection>scm:git:https://github.com/negod/GenericLibrary.git</developerConnection>
     </scm>
 
 </project>
