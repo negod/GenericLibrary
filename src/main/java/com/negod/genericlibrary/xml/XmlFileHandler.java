@@ -7,14 +7,8 @@ import com.negod.genericlibrary.constants.filehandler.GenericFile;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.jdom.Document;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
@@ -22,25 +16,16 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
 /**
- *
- * @author Joakim Johansson
+ * 
+ * @author Joakikm Johansson (joakimjohansson@outlook.com)
  */
 public class XmlFileHandler {
 
-    XmlCreator xmlcreator = new XmlCreator();
-    XmlReader xmlreader = new XmlReader();
+    XmlCreator parser = new XmlCreator();
+    XmlParser reader = new XmlParser();
 
     public XmlFileHandler() {
-        File file = new File(Constants.XML_TEMPLATE_FOLDER);
-        if (!file.exists()) {
-            try {
-                file.mkdir();
-                Path path = FileSystems.getDefault().getPath(Constants.XML_TEMPLATE_FOLDER);
-                Files.setAttribute(path, Constants.HIDDEN_FILE_ATTRIBUTE, true);
-            } catch (IOException ex) {
-                Logger.getLogger(XmlFileHandler.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        GenericFile.createHiddenFolderIfNotExists(Constants.XML_TEMPLATE_FOLDER);
     }
 
     /**
@@ -58,7 +43,7 @@ public class XmlFileHandler {
             Document classDefinedDoc = getDocumentFromFile(buildTemplateFileame(fileName));
             documents.put(XmlType.PRETTY_PRINT, prettyPrintDoc);
             documents.put(XmlType.CLASS_DEFINED, classDefinedDoc);
-            return xmlreader.parseFileData(documents);
+            return reader.parseFileData(documents);
         } else {
             throw new Exception("File " + fileName + " does not exist!");
         }
@@ -75,7 +60,7 @@ public class XmlFileHandler {
     public void createXml(Dto dto, String fileName) throws Exception {
         try {
             fileName = addXmlEndingToFile(fileName);
-            Map<XmlType, Document> documents = xmlcreator.createXmlDocument(dto);
+            Map<XmlType, Document> documents = parser.createXmlDocument(dto);
             createXmlFiles(documents, fileName);
         } catch (Exception ex) {
             throw new Exception(ex);

@@ -14,17 +14,18 @@ import org.jdom.Document;
 import org.jdom.Element;
 
 /**
- *
- * @author Joakim
+ * 
+ * @author Joakikm Johansson (joakimjohansson@outlook.com)
  */
-public class XmlClassDocumentCreator {
+class XmlClassDocumentCreator {
 
-    private final String CLASS_ATTRIBUTE = Constants.CLASSTYPE_NODE;
+    private final String CLASSTYPE_NODE = Constants.CLASSTYPE_NODE;
+    private final String CLASSTYPE_ATTRIBUTE = Constants.CLASSTYPE_ATTRIBUTE;
     private Map<String, String> classTypes = new HashMap<String, String>();
 
     public Document getClassDocument(Dto dto) {
         classTypes.clear();
-        Element rootnode = new Element(CLASS_ATTRIBUTE);
+        Element rootnode = new Element(CLASSTYPE_NODE);
         classTypes = extractClassTypes(classTypes, dto);
         addClassTypesToElememt(classTypes, rootnode);
         return new Document(rootnode);
@@ -56,7 +57,7 @@ public class XmlClassDocumentCreator {
     private void addClassTypesToElememt(Map<String, String> classTypes, Element parentNode) {
         for (Map.Entry<String, String> entry : classTypes.entrySet()) {
             Element childToParentNode = new Element(entry.getKey());
-            childToParentNode.setAttribute(CLASS_ATTRIBUTE, entry.getValue());
+            childToParentNode.setAttribute(CLASSTYPE_ATTRIBUTE, entry.getValue());
             parentNode.addContent(childToParentNode);
         }
     }

@@ -11,8 +11,8 @@ import java.util.Map;
 import org.jdom.Document;
 
 /**
- *
- * @author Joakim Johansson
+ * 
+ * @author Joakikm Johansson (joakimjohansson@outlook.com)
  */
 class XmlCreator {
 

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classtypes>
-  <setting classtypes="com.negod.genericlibrary.constants.Setting" />
-  <phone classtypes="com.negod.genericlibrary.constants.Phone" />
-  <phonephone classtypes="com.negod.genericlibrary.constants.PhonePhone" />
-  <user classtypes="com.negod.genericlibrary.constants.User" />
-</classtypes>
-

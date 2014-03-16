@@ -11,10 +11,10 @@ import org.jdom.Document;
 import org.jdom.Element;
 
 /**
- *
- * @author Joakim
+ * 
+ * @author Joakikm Johansson (joakimjohansson@outlook.com)
  */
-public class XmlDocumentCreator {
+class XmlDocumentCreator {
 
     public Document getXmlDocument(Dto dto) {
         Element rootnode = new Element(dto.getEnumType().getSimpleName().toLowerCase());

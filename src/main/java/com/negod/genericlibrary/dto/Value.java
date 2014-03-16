@@ -7,8 +7,9 @@ package com.negod.genericlibrary.dto;
 import java.util.Collection;
 
 /**
- *
- * @author Joakim
+ * 
+ * @author Joakikm Johansson (joakimjohansson@outlook.com)
+ * @param <T> 
  */
 public class Value<T> {
 

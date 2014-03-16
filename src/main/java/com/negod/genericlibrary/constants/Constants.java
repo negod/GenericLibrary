@@ -5,8 +5,8 @@
 package com.negod.genericlibrary.constants;
 
 /**
- *
- * @author Joakim
+ * 
+ * @author Joakikm Johansson (joakimjohansson@outlook.com)
  */
 public class Constants {
 
@@ -19,4 +19,5 @@ public class Constants {
     public static final String XML_FILE_EXTENSION = ".xml";
     public static final String HIDDEN_FILE_ATTRIBUTE = "dos:hidden";
     public static final String CLASSTYPE_NODE = "classtypes";
+    public static final String CLASSTYPE_ATTRIBUTE = "classtype";
 }

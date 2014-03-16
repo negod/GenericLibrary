@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setting>
+  <zip_path>ZipPath</zip_path>
+  <deploy_path>DeployPath</deploy_path>
+  <compile_path>CompilePath</compile_path>
+  <unzip>UnZipPath</unzip>
+  <compile>123</compile>
+  <users>
+    <user>
+      <prename>Joakim</prename>
+      <lastname>Johansson</lastname>
+      <phone>
+        <home>0522 - 18087</home>
+        <mobile>0704 - 101192</mobile>
+        <phonephone>
+          <supanumber>1234</supanumber>
+        </phonephone>
+      </phone>
+    </user>
+    <user>
+      <prename>Joakim</prename>
+      <lastname>Johansson</lastname>
+      <phone>
+        <home>0522 - 18087</home>
+        <mobile>0704 - 101192</mobile>
+        <phonephone>
+          <supanumber>1234</supanumber>
+        </phonephone>
+      </phone>
+    </user>
+  </users>
+  <user>
+    <prename>Joakim</prename>
+    <lastname>Johansson</lastname>
+    <phone>
+      <home>0522 - 18087</home>
+      <mobile>0704 - 101192</mobile>
+      <phonephone>
+        <supanumber>1234</supanumber>
+      </phonephone>
+    </phone>
+  </user>
+</setting>
+

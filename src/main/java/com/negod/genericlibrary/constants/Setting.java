@@ -5,10 +5,9 @@
 package com.negod.genericlibrary.constants;
 
 /**
- *
- * @author Joakim
+ * 
+ * @author Joakikm Johansson (joakimjohansson@outlook.com)
  */
-
 public enum Setting {
 
     ZIP_PATH,

@@ -8,8 +8,9 @@ import java.util.Collection;
 import java.util.EnumMap;
 
 /**
- *
- * @author Joakim
+ * 
+ * @author Joakikm Johansson (joakimjohansson@outlook.com)
+ * @param <T> 
  */
 public abstract class DataHolder<T extends Enum<T>> {
 
