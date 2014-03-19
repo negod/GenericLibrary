@@ -1,0 +1,8 @@
+#################
+## Netbeans
+#################
+
+target/
+nbactions.xml
+
+
