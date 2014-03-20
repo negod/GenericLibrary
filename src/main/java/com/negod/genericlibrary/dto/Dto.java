@@ -7,9 +7,9 @@ package com.negod.genericlibrary.dto;
 import java.util.Collection;
 
 /**
- * 
+ *
  * @author Joakikm Johansson (joakimjohansson@outlook.com)
- * @param <T> 
+ * @param <T>
  */
 public class Dto<T extends Enum<T>> extends DataHolder<T> {
 
@@ -24,8 +24,9 @@ public class Dto<T extends Enum<T>> extends DataHolder<T> {
      * @param field
      * @return
      */
-    public Value get(T field) {
-        return super.fields.get(field);
+    @Override
+    public <P> P get(T field) {
+        return (P) super.fields.get(field).<P>getValue();
     }
 
     /**
@@ -33,6 +34,7 @@ public class Dto<T extends Enum<T>> extends DataHolder<T> {
      *
      * @return
      */
+    @Override
     public Collection<T> getFields() {
         return super.fields.keySet();
     }
@@ -42,6 +44,7 @@ public class Dto<T extends Enum<T>> extends DataHolder<T> {
      *
      * @return
      */
+    @Override
     public Collection<Value> getValues() {
         return super.fields.values();
     }
@@ -51,6 +54,7 @@ public class Dto<T extends Enum<T>> extends DataHolder<T> {
      *
      * @return
      */
+    @Override
     public Class<T> getEnumType() {
         return super.fieldType;
     }
