@@ -1,5 +1,7 @@
 package com.negod.genericlibrary.xml;
 
+import com.negod.genericlibrary.classcaster.CastFromStringUtil;
+import com.negod.genericlibrary.classcaster.ClassType;
 import com.negod.genericlibrary.dto.Dto;
 import com.negod.genericlibrary.constants.XmlType;
 import com.negod.genericlibrary.constants.Constants;
@@ -43,24 +45,26 @@ class XmlParser {
         if (clazz.isEnum()) {
             for (T item : EnumSet.allOf(clazz)) {
                 Element childElement = rootElement.getChild(item.name().toLowerCase());
-                if (isElementRootClass(childElement)) {
-                    Dto dto = getDtoByName(item.name().toLowerCase());
-                    extractValuesFromElementToDto(dto, rootElement.getChild(item.name().toLowerCase()));
-                    rootDto.set(item, dto);
-                } else if (isElementCollection(childElement)) {
-                    List<Element> childElements = childElement.getChildren();
-                    List<Dto> dtos = new ArrayList<Dto>();
-                    for (Element element : childElements) {
-                        if (isElementRootClass(element)) {
-                            Dto dto = getDtoByName(element.getName());
-                            extractValuesFromElementToDto(dto, element);
-                            dtos.add(dto);
+                if (childElement != null) {
+                    if (isElementRootClass(childElement)) {
+                        Dto dto = getDtoByName(item.name().toLowerCase());
+                        extractValuesFromElementToDto(dto, rootElement.getChild(item.name().toLowerCase()));
+                        rootDto.set(item, dto);
+                    } else if (isElementCollection(childElement)) {
+                        List<Element> childElements = childElement.getChildren();
+                        List<Dto> dtos = new ArrayList<Dto>();
+                        for (Element element : childElements) {
+                            if (isElementRootClass(element)) {
+                                Dto dto = getDtoByName(element.getName());
+                                extractValuesFromElementToDto(dto, element);
+                                dtos.add(dto);
+                            }
                         }
+                        rootDto.set(item, dtos);
+                    } else {
+                        String value = rootElement.getChildText(item.name().toLowerCase());
+                        CastFromStringUtil.setTypedValueInDto(rootDto, item, value);
                     }
-                    rootDto.set(item, dtos);
-                } else {
-                    String value = rootElement.getChildText(item.name().toLowerCase());
-                    rootDto.set(item, value);
                 }
             }
         }

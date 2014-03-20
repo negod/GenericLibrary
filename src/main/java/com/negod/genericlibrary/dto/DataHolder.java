@@ -76,6 +76,18 @@ public abstract class DataHolder<T extends Enum<T>> {
      * @param field
      * @param data
      */
+    public void set(T field, Long data) {
+        if (data != null) {
+            fields.put(field, new Value(data, field));
+        }
+    }
+
+    /**
+     * Sets a field in the Dto
+     *
+     * @param field
+     * @param data
+     */
     public void set(T field, Collection<Dto> data) {
         if (data != null) {
             fields.put(field, new Value(data, field));
@@ -95,6 +107,8 @@ public abstract class DataHolder<T extends Enum<T>> {
     }
 
     public abstract <P> P get(T field);
+
+    public abstract <P> Value<P> getValue(T field);
 
     public abstract Collection<T> getFields();
 

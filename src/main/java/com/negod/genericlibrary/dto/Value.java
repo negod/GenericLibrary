@@ -7,9 +7,9 @@ package com.negod.genericlibrary.dto;
 import java.util.Collection;
 
 /**
- * 
+ *
  * @author Joakikm Johansson (joakimjohansson@outlook.com)
- * @param <T> 
+ * @param <T>
  */
 public class Value<T> {
 
@@ -39,6 +39,10 @@ public class Value<T> {
 
     public boolean isNull() {
         return value == null;
+    }
+
+    public boolean isNotNull() {
+        return value != null;
     }
 
     public boolean isInteger() {
