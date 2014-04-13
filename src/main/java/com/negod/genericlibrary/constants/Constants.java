@@ -14,7 +14,7 @@ public class Constants {
     public static final String CLASS_ATTRIBUTE = "class";
     public static final String ROOTCLASS_ATTRIBUTE = "rootClass";
     public static final String COLLECTIOn_ATTRIBUTE = "collection";
-    public static final String XML_TEMPLATE_FOLDER = "XML_TEMPLATES\\";
+    public static final String XML_TEMPLATE_FOLDER = "XmlData\\XML_TEMPLATES\\";
     public static final String XML_TEMPLATE_FILE_EXTENSION = "_template";
     public static final String XML_FILE_EXTENSION = ".xml";
     public static final String HIDDEN_FILE_ATTRIBUTE = "dos:hidden";

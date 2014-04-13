@@ -60,6 +60,7 @@ public class XmlFileHandler {
     public void createXml(Dto dto, String fileName) throws Exception {
         try {
             fileName = addXmlEndingToFile(fileName);
+            GenericFile.createFolderIfNotExists(fileName);
             Map<XmlType, Document> documents = parser.createXmlDocument(dto);
             createXmlFiles(documents, fileName);
         } catch (Exception ex) {

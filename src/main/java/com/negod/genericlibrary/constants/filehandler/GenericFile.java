@@ -15,7 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * 
+ *
  * @author Joakikm Johansson (joakimjohansson@outlook.com)
  */
 public class GenericFile {
@@ -35,10 +35,23 @@ public class GenericFile {
         if (!file.exists()) {
             try {
                 file.mkdir();
-                Path path = FileSystems.getDefault().getPath(Constants.XML_TEMPLATE_FOLDER);
+                Path path = FileSystems.getDefault().getPath(file.getPath());
                 Files.setAttribute(path, Constants.HIDDEN_FILE_ATTRIBUTE, true);
                 return true;
             } catch (IOException ex) {
+                Logger.getLogger(XmlFileHandler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return false;
+    }
+
+    public static boolean createFolderIfNotExists(String Folder) {
+        File file = new File(Folder);
+        if (!file.exists()) {
+            try {
+                file.mkdir();
+                return true;
+            } catch (Exception ex) {
                 Logger.getLogger(XmlFileHandler.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
