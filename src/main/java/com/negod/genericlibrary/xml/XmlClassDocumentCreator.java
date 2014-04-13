@@ -38,7 +38,7 @@ class XmlClassDocumentCreator {
         Collection<Value> values = dto.getValues();
         for (Value value : values) {
             if (value.isDto()) {
-                Dto dtoValue = (Dto) value.getValue();
+                Dto dtoValue = value.getValue().getDto();
                 classTypes.put(dtoValue.getEnumType().getSimpleName().toLowerCase(), dtoValue.getEnumType().getCanonicalName());
                 extractClassTypes(classTypes, dtoValue);
             } else if (value.isCollection()) {

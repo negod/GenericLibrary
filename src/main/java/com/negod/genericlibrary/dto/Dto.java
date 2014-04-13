@@ -31,8 +31,8 @@ public class Dto<T extends Enum<T>> extends DataHolder<T> {
      * @return
      */
     @Override
-    public <P> P get(T field) {
-        return (P) super.fields.get(field).<P>getValue();
+    public DataGetter get(T field) {
+        return super.fields.get(field).getValue();
     }
 
     /**

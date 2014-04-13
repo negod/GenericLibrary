@@ -25,8 +25,8 @@ public class Value<T> {
         return field.name();
     }
 
-    public T getValue() {
-        return value;
+    public DataGetter getValue() {
+        return new DataGetter(value);
     }
 
     public Class getClassType() {
@@ -46,23 +46,23 @@ public class Value<T> {
     }
 
     public boolean isInteger() {
-        return getValue() instanceof Integer;
+        return getValue().getInteger() != null;
     }
 
     public boolean isString() {
-        return getValue() instanceof String;
+        return getValue().getString() != null;
     }
 
     public boolean isBoolean() {
-        return getValue() instanceof Boolean;
+        return getValue().getBoolean() != null;
     }
 
     public boolean isCollection() {
-        return getValue() instanceof Collection;
+        return getValue().getCollection() != null;
     }
 
     public boolean isDto() {
-        return getValue() instanceof Dto;
+        return getValue().getDto() != null;
     }
 
     @Override

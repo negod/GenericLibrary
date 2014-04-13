@@ -106,7 +106,7 @@ public abstract class DataHolder<T extends Enum<T>> {
         }
     }
 
-    public abstract <P> P get(T field);
+    public abstract DataGetter get(T field);
 
     public abstract <P> Value<P> getValue(T field);
 

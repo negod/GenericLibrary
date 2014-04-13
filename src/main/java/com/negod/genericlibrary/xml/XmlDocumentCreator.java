@@ -37,7 +37,7 @@ class XmlDocumentCreator {
             childToParentNode = new Element(value.getFieldName().toLowerCase());
             if (value.isDto()) {
 
-                Dto dtoData = (Dto) value.getValue();
+                Dto dtoData = value.getValue().getDto();
                 addDataToElement(dtoData, childToParentNode);
 
             } else if (value.isCollection()) {
