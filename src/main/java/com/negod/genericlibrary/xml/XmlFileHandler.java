@@ -35,20 +35,22 @@ public class XmlFileHandler {
      *
      * @param fileName The xml file
      * @return
-     * @throws Exception
      */
-    public Dto getXmlFileAsDto(String fileName) throws Exception {
+    public Dto getXmlFileAsDto(String fileName) {
         fileName = addXmlEndingToFile(fileName);
         if (GenericFile.fileExists(fileName)) {
-            Map<XmlType, Document> documents = new EnumMap<XmlType, Document>(XmlType.class);
-            Document prettyPrintDoc = getDocumentFromFile(fileName);
-            Document classDefinedDoc = getDocumentFromFile(buildTemplateFileame(fileName));
-            documents.put(XmlType.PRETTY_PRINT, prettyPrintDoc);
-            documents.put(XmlType.CLASS_DEFINED, classDefinedDoc);
-            return reader.parseFileData(documents);
-        } else {
-            throw new Exception("File " + fileName + " does not exist!");
+            try {
+                Map<XmlType, Document> documents = new EnumMap<>(XmlType.class);
+                Document prettyPrintDoc = getDocumentFromFile(fileName);
+                Document classDefinedDoc = getDocumentFromFile(buildTemplateFileame(fileName));
+                documents.put(XmlType.PRETTY_PRINT, prettyPrintDoc);
+                documents.put(XmlType.CLASS_DEFINED, classDefinedDoc);
+                return reader.parseFileData(documents);
+            } catch (Exception ex) {
+                Logger.getLogger(XmlFileHandler.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+        return null;
     }
 
     /**
