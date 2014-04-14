@@ -9,6 +9,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jdom.Document;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
@@ -16,7 +18,7 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
 /**
- * 
+ *
  * @author Joakikm Johansson (joakimjohansson@outlook.com)
  */
 public class XmlFileHandler {
@@ -55,16 +57,15 @@ public class XmlFileHandler {
      *
      * @param dto The data for the xml file
      * @param fileName The filename för the xml file
-     * @throws Exception
      */
-    public void createXml(Dto dto, String fileName) throws Exception {
+    public void createXml(Dto dto, String fileName) {
         try {
             fileName = addXmlEndingToFile(fileName);
             GenericFile.createFolderIfNotExists(fileName);
             Map<XmlType, Document> documents = parser.createXmlDocument(dto);
             createXmlFiles(documents, fileName);
         } catch (Exception ex) {
-            throw new Exception(ex);
+            Logger.getLogger(XmlFileHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
