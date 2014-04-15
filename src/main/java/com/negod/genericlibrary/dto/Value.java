@@ -4,8 +4,6 @@
  */
 package com.negod.genericlibrary.dto;
 
-import java.util.Collection;
-
 /**
  *
  * @author Joakikm Johansson (joakimjohansson@outlook.com)

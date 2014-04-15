@@ -42,7 +42,7 @@ class XmlClassDocumentCreator {
                 classTypes.put(dtoValue.getEnumType().getSimpleName().toLowerCase(), dtoValue.getEnumType().getCanonicalName());
                 extractClassTypes(classTypes, dtoValue);
             } else if (value.isCollection()) {
-                Collection dataCollection = (Collection) value.getValue();
+                Collection dataCollection = (Collection) value.getValue().getCollection();
                 for (Object obj : dataCollection) {
                     if (obj instanceof Dto) {
                         Dto dtoValue = (Dto) obj;

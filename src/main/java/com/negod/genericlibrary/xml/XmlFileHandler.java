@@ -27,6 +27,7 @@ public class XmlFileHandler {
     XmlParser reader = new XmlParser();
 
     public XmlFileHandler() {
+        GenericFile.createFolderIfNotExists(Constants.XML_FOLDER);
         GenericFile.createHiddenFolderIfNotExists(Constants.XML_TEMPLATE_FOLDER);
     }
 
@@ -37,11 +38,10 @@ public class XmlFileHandler {
      * @return
      */
     public Dto getXmlFileAsDto(String fileName) {
-        fileName = addXmlEndingToFile(fileName);
-        if (GenericFile.fileExists(fileName)) {
+        if (GenericFile.fileExists(buildXmlFileName(fileName))) {
             try {
                 Map<XmlType, Document> documents = new EnumMap<>(XmlType.class);
-                Document prettyPrintDoc = getDocumentFromFile(fileName);
+                Document prettyPrintDoc = getDocumentFromFile(buildXmlFileName(fileName));
                 Document classDefinedDoc = getDocumentFromFile(buildTemplateFileame(fileName));
                 documents.put(XmlType.PRETTY_PRINT, prettyPrintDoc);
                 documents.put(XmlType.CLASS_DEFINED, classDefinedDoc);
@@ -50,7 +50,7 @@ public class XmlFileHandler {
                 Logger.getLogger(XmlFileHandler.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return null;
+        return new Dto("File does not Exist", null);
     }
 
     /**
@@ -62,8 +62,6 @@ public class XmlFileHandler {
      */
     public void createXml(Dto dto, String fileName) {
         try {
-            fileName = addXmlEndingToFile(fileName);
-            GenericFile.createFolderIfNotExists(fileName);
             Map<XmlType, Document> documents = parser.createXmlDocument(dto);
             createXmlFiles(documents, fileName);
         } catch (Exception ex) {
@@ -71,9 +69,7 @@ public class XmlFileHandler {
         }
     }
 
-    private String addXmlEndingToFile(String fileName) {
-        return fileName + Constants.XML_FILE_EXTENSION;
-    }
+   
 
     /**
      * Builds a Document from the xml file
@@ -99,12 +95,16 @@ public class XmlFileHandler {
     private void createXmlFiles(Map<XmlType, Document> documents, String fileName) throws Exception {
         try {
             createXmlFile(documents.get(XmlType.CLASS_DEFINED), buildTemplateFileame(fileName));
-            createXmlFile(documents.get(XmlType.PRETTY_PRINT), fileName);
+            createXmlFile(documents.get(XmlType.PRETTY_PRINT), buildXmlFileName(fileName));
         } catch (IOException io) {
             throw new Exception("Cannot create XmlFile " + fileName, io);
         } catch (Exception e) {
             throw new Exception("Cannot create XmlFile " + fileName, e);
         }
+    }
+    
+     private String buildXmlFileName(String fileName) {
+        return Constants.XML_FOLDER + fileName + Constants.XML_FILE_EXTENSION;
     }
 
     private String buildTemplateFileame(String fileName) {

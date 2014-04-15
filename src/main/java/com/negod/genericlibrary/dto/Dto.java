@@ -22,6 +22,10 @@ public class Dto<T extends Enum<T>> extends DataHolder<T> {
         super(inEnum);
     }
 
+    public Dto(String errorMessage, String errorCode) {
+        super(errorMessage, errorCode);
+    }
+
     /**
      * Gets the value (Casted) Dto.<String>get(Emun.type);
      * Dto.<Boolean>.get(Enum.type); etc...
@@ -32,7 +36,11 @@ public class Dto<T extends Enum<T>> extends DataHolder<T> {
      */
     @Override
     public DataGetter get(T field) {
-        return super.fields.get(field).getValue();
+        if (super.fields != null) {
+            return super.fields.get(field).getValue();
+        } else {
+            return new DataGetter(null);
+        }
     }
 
     /**

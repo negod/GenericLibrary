@@ -22,7 +22,7 @@ import org.jdom.Element;
 class XmlParser {
 
     private final String CLASSTYPE_ATTRIBUTE = Constants.CLASSTYPE_ATTRIBUTE;
-    Map<String, String> rootClasses = new HashMap<String, String>();
+    Map<String, String> rootClasses = new HashMap<>();
 
     public Dto parseFileData(Map<XmlType, Document> documents) throws Exception {
         rootClasses.clear();
@@ -52,14 +52,7 @@ class XmlParser {
                         rootDto.set(item, dto);
                     } else if (isElementCollection(childElement)) {
                         List<Element> childElements = childElement.getChildren();
-                        List<Dto> dtos = new ArrayList<Dto>();
-                        for (Element element : childElements) {
-                            if (isElementRootClass(element)) {
-                                Dto dto = getDtoByName(element.getName());
-                                extractValuesFromElementToDto(dto, element);
-                                dtos.add(dto);
-                            }
-                        }
+                        List<Dto> dtos = handleCollections(childElements);
                         rootDto.set(item, dtos);
                     } else {
                         String value = rootElement.getChildText(item.name().toLowerCase());
@@ -68,6 +61,18 @@ class XmlParser {
                 }
             }
         }
+    }
+
+    private List<Dto> handleCollections(List<Element> childElements) {
+        List<Dto> dtos = new ArrayList<>();
+        for (Element element : childElements) {
+            if (isElementRootClass(element)) {
+                Dto dto = getDtoByName(element.getName());
+                extractValuesFromElementToDto(dto, element);
+                dtos.add(dto);
+            }
+        }
+        return dtos;
     }
 
     private Dto getDtoByName(String name) {
@@ -97,7 +102,6 @@ class XmlParser {
             if (element.getChildren().size() > 0) {
                 return true;
             }
-
         }
         return false;
     }

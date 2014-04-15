@@ -19,6 +19,14 @@ public class DataGetter {
         this.value = value;
     }
 
+    public boolean isNotNull() {
+        if (value == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public String getString() {
         try {
             return String.valueOf(value);

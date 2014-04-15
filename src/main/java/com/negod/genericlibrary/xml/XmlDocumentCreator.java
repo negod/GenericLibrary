@@ -42,7 +42,7 @@ class XmlDocumentCreator {
 
             } else if (value.isCollection()) {
 
-                Collection dataCollection = (Collection) value.getValue();
+                Collection dataCollection = (Collection) value.getValue().getCollection();
                 Element childToChildToParentNode;
 
                 for (Object obj : dataCollection) {

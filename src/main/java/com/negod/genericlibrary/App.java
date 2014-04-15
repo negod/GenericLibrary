@@ -34,7 +34,7 @@ public class App {
 
         try {
             XmlFileHandler handler = new XmlFileHandler();
-            handler.createXml(setting, "\\xml\\TestFile");
+            handler.createXml(setting, "TestFile");
             Dto dtoData = handler.getXmlFileAsDto("TestFile");
             handler.createXml(dtoData, "TestFile2");
             System.out.print("Hello");

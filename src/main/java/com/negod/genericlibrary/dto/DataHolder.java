@@ -12,14 +12,18 @@ import java.util.EnumMap;
  * @author Joakikm Johansson (joakimjohansson@outlook.com)
  * @param <T>
  */
-public abstract class DataHolder<T extends Enum<T>> {
+public abstract class DataHolder<T extends Enum<T>> extends DtoErrorHandler {
 
-    EnumMap<T, Value> fields;
+    EnumMap<T, Value> fields = null;
     Class<T> fieldType;
 
     public DataHolder(Class<T> inEnum) {
-        fields = new EnumMap<T, Value>(inEnum);
+        fields = new EnumMap<>(inEnum);
         fieldType = inEnum;
+    }
+    
+    public  DataHolder(String message, String code){
+        super(message, code);
     }
 
     /**
