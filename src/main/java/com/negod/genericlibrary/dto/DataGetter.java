@@ -29,7 +29,11 @@ public class DataGetter {
 
     public String getString() {
         try {
-            return String.valueOf(value);
+            if (value != null) {
+                return String.valueOf(value);
+            } else {
+                return "";
+            }
         } catch (Exception e) {
             return "";
         }

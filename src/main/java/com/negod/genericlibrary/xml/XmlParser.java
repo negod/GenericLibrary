@@ -1,7 +1,6 @@
 package com.negod.genericlibrary.xml;
 
 import com.negod.genericlibrary.classcaster.CastFromStringUtil;
-import com.negod.genericlibrary.classcaster.ClassType;
 import com.negod.genericlibrary.dto.Dto;
 import com.negod.genericlibrary.constants.XmlType;
 import com.negod.genericlibrary.constants.Constants;

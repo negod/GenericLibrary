@@ -50,7 +50,7 @@ public class XmlFileHandler {
                 Logger.getLogger(XmlFileHandler.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return new Dto("File does not Exist", null);
+        return new Dto("File " + fileName + " does not Exist", null);
     }
 
     /**
@@ -68,8 +68,6 @@ public class XmlFileHandler {
             Logger.getLogger(XmlFileHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-   
 
     /**
      * Builds a Document from the xml file
@@ -102,8 +100,8 @@ public class XmlFileHandler {
             throw new Exception("Cannot create XmlFile " + fileName, e);
         }
     }
-    
-     private String buildXmlFileName(String fileName) {
+
+    private String buildXmlFileName(String fileName) {
         return Constants.XML_FOLDER + fileName + Constants.XML_FILE_EXTENSION;
     }
 

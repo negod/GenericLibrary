@@ -37,10 +37,11 @@ public class Dto<T extends Enum<T>> extends DataHolder<T> {
     @Override
     public DataGetter get(T field) {
         if (super.fields != null) {
-            return super.fields.get(field).getValue();
-        } else {
-            return new DataGetter(null);
+            if (super.fields.get(field) != null) {
+                return super.fields.get(field).getValue();
+            }
         }
+        return new DataGetter(null);
     }
 
     /**
