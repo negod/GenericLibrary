@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classtypes>
+  <command classtype="com.negod.genericstest.CmdCommands.Command" />
+  <cmdcommands classtype="com.negod.genericstest.CmdCommands" />
+</classtypes>
+
