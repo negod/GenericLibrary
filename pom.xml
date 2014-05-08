@@ -66,11 +66,11 @@
     <distributionManagement>
         <snapshotRepository>
             <id>snapshots</id>
-            <url>http://localhost:8081/nexus/content/repositories/snapshots</url>
+            <url>http://negod.myasustor.com:8080/nexus-2.8.0-05/content/repositories/snapshots/</url>
         </snapshotRepository>
         <repository>
             <id>releases</id>
-            <url>http://localhost:8081/nexus/content/repositories/releases</url>
+            <url>http://negod.myasustor.com:8080/nexus-2.8.0-05/content/repositories/releases/</url>
         </repository>
     </distributionManagement>
 
